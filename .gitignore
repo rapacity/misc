@@ -1,0 +1,14 @@
+compiled/*
+*.swp
+*.zo
+*.dep
+*.so
+*.o
+.hg
+.hgignore
+scribblings/*.js
+scribblings/*.html
+scribblings/*.css
+doc/*
+bindings/*
+prototypes/*
