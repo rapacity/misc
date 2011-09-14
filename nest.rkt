@@ -4,7 +4,7 @@
 
 (begin-for-syntax
   (define-syntax-class nest-body
-    (pattern ((n ...)) #:with nested #`(n ...))
+    (pattern (x) #:with nested #`x)
     (pattern ((n ...) . rest:nest-body) #:with nested #`(n ... rest.nested))))
 
 (define-syntax ($ stx)
