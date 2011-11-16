@@ -4,14 +4,11 @@
 
 (require (for-syntax syntax/parse racket/syntax racket/list racket/base))
 
-(define-syntax (<> stx) (raise-syntax-error "can only be used in middle or last lines of ->>"))
+(define-syntax (<> stx) (raise-syntax-error "can only be used in ->>* or middle and last lines of ->>"))
 
 (begin-for-syntax
   (define-syntax-class atom
     (pattern (~not (n ...))))
-  (define-syntax-class nest-body
-    (pattern ((n ...)) #:with nested #`(n ...))
-    (pattern ((n ...) . rest:nest-body) #:with nested #`(n ... rest.nested)))
   (define-syntax-class maybe-<>
     (pattern (~and x:atom (~literal <>))
              #:with expr (generate-temporary)
